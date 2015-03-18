@@ -14,7 +14,7 @@ dir=$(pwd)
 mkdir /Volumes/Data/node
 cd /Volumes/Data/node
 
-# curl -O http://nodejs.org/dist/v0.12.0/node-v0.12.0-darwin-x64.tar.gz
+ curl -O http://nodejs.org/dist/v0.12.0/node-v0.12.0-darwin-x64.tar.gz
 tar -xf node-v0.12.0-darwin-x64.tar.gz 
 cd node-v0.12.0-darwin-x64/bin
 
