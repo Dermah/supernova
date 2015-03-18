@@ -22,19 +22,20 @@ server.on("error", function (err) {
 server.on("message", function (msg, rinfo) {  
   server.recievedPulse = JSON.parse(msg);
 
-  
+  if (server.recievedPulse.supernova) {
 
-  if (!pulsar) {
-    copyFile('/Volumes/Transit/PULSAR/Pulsar.json', './Pulsar.json', function() {
-      console.log("Pulsar.json downloaded");
-      copyFile('/Volumes/Transit/PULSAR/PULSAR.jar', './Pulsar.jar', function() {
-        console.log("Pulsar.jar downloaded");
-        pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
+    if (!pulsar) {
+      copyFile('/Volumes/Transit/PULSAR/Pulsar.json', './Pulsar.json', function() {
+        console.log("Pulsar.json downloaded");
+        copyFile('/Volumes/Transit/PULSAR/PULSAR.jar', './Pulsar.jar', function() {
+          console.log("Pulsar.jar downloaded");
+          pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
+        });
       });
-    });
-  } else {
-    pulsar.kill('SIGTERM');
-    pulsar = undefined;
+    } else {
+      pulsar.kill('SIGTERM');
+      pulsar = undefined;
+    }
   }
 });
 
