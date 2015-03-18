@@ -23,6 +23,16 @@ server.on("message", function (msg, rinfo) {
   server.recievedPulse = JSON.parse(msg);
 
   if (server.recievedPulse.supernova) {
+    if (server.recievedPulse.action &&
+        server.recievedPulse.action === "die") {
+      
+      console.log("DIE RECIEVED");
+      if (pulsar) {
+        pulsar.kill('SIGTERM');
+        pulsar = undefined;
+      }
+      process.exit();
+    }
 
     if (!pulsar) {
       copyFile('/Volumes/Transit/PULSAR/Pulsar.json', './Pulsar.json', function() {
