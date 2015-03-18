@@ -11,8 +11,8 @@ cp /Volumes/Transit/PULSAR/listener.js ./
 
 dir=$(pwd)
 
-mkdir $1
-cd $1
+mkdir /Volumes/Data/node
+cd /Volumes/Data/node
 
 # curl -O http://nodejs.org/dist/v0.12.0/node-v0.12.0-darwin-x64.tar.gz
 tar -xf node-v0.12.0-darwin-x64.tar.gz 
