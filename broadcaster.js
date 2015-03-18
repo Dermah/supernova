@@ -35,6 +35,8 @@ client.bind(function() {
 
       client.send(signal, 0, signal.length, 6661, "255.255.255.255", function(err, bytes) {
         console.log("Sent empty packet (restart)");
+        client.close();
+        process.exit();
       });
     }
   });
