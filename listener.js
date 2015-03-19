@@ -39,6 +39,18 @@ server.on("message", function (msg, rinfo) {
         copyFile('/Volumes/Transit/PULSAR/PULSAR.jar', './Pulsar.jar', function() {
           console.log("Pulsar.jar downloaded");
           pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
+
+          pulsar.stdout.on('data', function (data) {
+            console.log('stdout: ' + data);
+          });
+
+          pulsar.stderr.on('data', function (data) {
+            console.log('stderr: ' + data);
+          });
+
+          pulsar.on('close', function (code) {
+            console.log('pulsar process exited with code ' + code);
+          });
         });
       });
     } else {
