@@ -1,7 +1,7 @@
-if test "$#" -ne 3; then
-	echo "Usage: ./node-bootstrap.sh /path/to/working/folder /path/to/listener.js /path/to/local/folder/for/node"
+if test "$#" -ne 2; then
+	echo "Usage: ./node-bootstrap.sh /path/to/working/folder /path/to/listener.js "
 	echo "For example:"
-	echo "./node-bootstrap.sh /Volumes/Data/ /Volumes/Transit/PULSAR/listener.js /Volumes/Data/node"
+	echo "./node-bootstrap.sh /Volumes/Data/ /Volumes/Transit/PULSAR/listener.js "
 	exit
 fi
 
@@ -10,8 +10,8 @@ cd $1
 
 cp $2 ./
 
-mkdir $3
-cd $3
+mkdir $1/node
+cd $1/node
 
 curl -O http://nodejs.org/dist/v0.12.0/node-v0.12.0-darwin-x64.tar.gz
 tar -xf node-v0.12.0-darwin-x64.tar.gz 
