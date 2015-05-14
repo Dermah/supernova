@@ -38,7 +38,8 @@ server.on("message", function (msg, rinfo) {
         console.log("Pulsar.json downloaded");
         copyFile('/Volumes/Transit/PULSAR/PULSAR.jar', './Pulsar.jar', function() {
           console.log("Pulsar.jar downloaded");
-          pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
+          //pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
+          pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" ['--start-fullscreen', 'http://localhost:3000']);
 
           pulsar.stdout.on('data', function (data) {
             console.log('stdout: ' + data);
