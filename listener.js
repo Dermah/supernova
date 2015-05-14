@@ -34,27 +34,23 @@ server.on("message", function (msg, rinfo) {
     }
 
     if (!pulsar) {
-      copyFile('/Volumes/Transit/PULSAR/Pulsar.json', './Pulsar.json', function() {
-        console.log("Pulsar.json downloaded");
-        copyFile('/Volumes/Transit/PULSAR/PULSAR.jar', './Pulsar.jar', function() {
-          console.log("Pulsar.jar downloaded");
-          //pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
-          pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" ['--start-fullscreen', 'http://localhost:3000']);
+      console.log("Supernova detected, starting Chrome containing PULSAR");
+      //pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
+      pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome" ['--start-fullscreen', 'http://localhost:3000']);
 
-          pulsar.stdout.on('data', function (data) {
-            console.log('stdout: ' + data);
-          });
+      pulsar.stdout.on('data', function (data) {
+        console.log('stdout: ' + data);
+      });
 
-          pulsar.stderr.on('data', function (data) {
-            console.log('stderr: ' + data);
-          });
+      pulsar.stderr.on('data', function (data) {
+        console.log('stderr: ' + data);
+      });
 
-          pulsar.on('close', function (code) {
-            console.log('pulsar process exited with code ' + code);
-          });
-        });
+      pulsar.on('close', function (code) {
+        console.log('pulsar process exited with code ' + code);
       });
     } else {
+      console.log("Supernova detected, killing Chrome");
       pulsar.kill('SIGTERM');
       pulsar = undefined;
     }
