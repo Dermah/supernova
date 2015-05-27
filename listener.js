@@ -43,7 +43,7 @@ server.on("message", function (msg, rinfo) {
 	      url = url + "?col=" + process.argv[2] + "&row=" + process.argv[3];
       }
       
-      pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome", ['--start-fullscreen', '--noerrdialogs', '--disable-infobars', '--user-data-dir=/Volumes/Data/', url]);
+      pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome", ['--start-fullscreen', '--noerrdialogs', '--disable-infobars', '--user-data-dir=./ChromeCache/', url]);
 
       pulsar.stdout.on('data', function (data) {
         console.log('stdout: ' + data);
