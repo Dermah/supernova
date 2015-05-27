@@ -2,20 +2,21 @@ var dgram = require("dgram");
 var fs = require('fs');
 var child = require('child_process');
 
+console.log("= SUPERNOVA OBSERVER ACTIVATED");
 
 var pulsar;
 var server = dgram.createSocket("udp4");
 
 server.on("listening", function () {
   var address = server.address();
-  //console.log("server listening " +
-  //  address.address + ":" + address.port);
+  console.log("= OBSERVER LOOKING AT " +
+    address.address + ":" + address.port);
 });
 
 server.on("error", function (err) {
-  //console.log("server error:\n" + err.stack);
+  console.log("= OBSERVER CRASHED:\n" + err.stack);
   server.close();
-  console.log("dgram socket failure: " + err.stack);
+  console.log("= dgram socket failure: " + err.stack);
 });
 
 server.on("message", function (msg, rinfo) {  
@@ -25,7 +26,7 @@ server.on("message", function (msg, rinfo) {
     if (server.recievedPulse.action &&
         server.recievedPulse.action === "die") {
       
-      console.log("DIE RECIEVED");
+      console.log("= DIE RECIEVED");
       if (pulsar) {
         pulsar.kill('SIGTERM');
         pulsar = undefined;
@@ -34,9 +35,9 @@ server.on("message", function (msg, rinfo) {
     }
 
     if (!pulsar) {
-      console.log("Supernova detected, starting Chrome containing PULSAR");
-      //pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
-      pulsar = child.spawn("/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome", ['--start-fullscreen', '--noerrdialogs', 'http://localhost:3000']);
+      console.log("= SUPERNOVA DETECTED, starting Chrome containing PULSAR");
+      
+      pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome", ['--start-fullscreen', '--noerrdialogs', '--disable-infobars', 'http://localhost:3000']);
 
       pulsar.stdout.on('data', function (data) {
         console.log('stdout: ' + data);
@@ -47,10 +48,10 @@ server.on("message", function (msg, rinfo) {
       });
 
       pulsar.on('close', function (code) {
-        console.log('pulsar process exited with code ' + code);
+        console.log('= CHROME DIED, ERROR CODE: ' + code);
       });
     } else {
-      console.log("Supernova detected, killing Chrome");
+      console.log("= SUPERNOVA DETECTED, killing Chrome");
       pulsar.kill('SIGTERM');
       pulsar = undefined;
     }
