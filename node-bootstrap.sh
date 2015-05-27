@@ -7,6 +7,10 @@ if test "$#" -ne 2; then
 fi
 
 echo "- CREATING SUPERNOVA OBSERVER"
+echo "- ENTER YOUR COLUMN"
+read col
+echo "- ENTER YOUR ROW"
+read row 
 
 mkdir $1
 cd $1
@@ -26,6 +30,6 @@ ln -s ./nodeBin/node-v0.12.0-darwin-x64/bin/node ./node
 
 echo "- SUCCESS, RUNNING SUPERNOVA OBSERVER"
 
-./node $1/listener.js
+./node $1/listener.js $col $row
 
 echo "- SUPERNOVA OBSERVER DESTROYED"
