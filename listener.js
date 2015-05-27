@@ -37,7 +37,13 @@ server.on("message", function (msg, rinfo) {
     if (!pulsar) {
       console.log("= SUPERNOVA DETECTED, starting Chrome containing PULSAR");
       
-      pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome", ['--start-fullscreen', '--noerrdialogs', '--disable-infobars', 'http://localhost:3000']);
+      var url = server.recievedPulse.baseURL;
+      if (process.argv[2] && process.argv[3]) {
+	      console.log("= SPAWNING AT GRID (" + process.argv[2] + ", " + process.argv[3] + ")");
+	      url = url + "?col=" + process.argv[2] + "&row=" + process.argv[3];
+      }
+      
+      pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome", ['--start-fullscreen', '--noerrdialogs', '--disable-infobars', url]);
 
       pulsar.stdout.on('data', function (data) {
         console.log('stdout: ' + data);
