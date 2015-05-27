@@ -36,7 +36,7 @@ server.on("message", function (msg, rinfo) {
     if (!pulsar) {
       console.log("Supernova detected, starting Chrome containing PULSAR");
       //pulsar = child.spawn('java', ['-jar', 'PULSAR.jar']);
-      pulsar = child.spawn("/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome", ['--start-fullscreen', 'http://localhost:3000']);
+      pulsar = child.spawn("/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome", ['--start-fullscreen', '--noerrdialogs', 'http://localhost:3000']);
 
       pulsar.stdout.on('data', function (data) {
         console.log('stdout: ' + data);
