@@ -39,10 +39,11 @@ server.on("message", function (msg, rinfo) {
       
       var url = server.recievedPulse.baseURL;
       if (process.argv[2] && process.argv[3]) {
-	      console.log("= SPAWNING AT GRID (" + process.argv[2] + ", " + process.argv[3] + ")");
-	      url = url + "?col=" + process.argv[2] + "&row=" + process.argv[3];
+        console.log("= SPAWNING AT GRID (" + process.argv[2] + ", " + process.argv[3] + ")");
+        url = url + "?col=" + process.argv[2] + "&row=" + process.argv[3];
       }
       
+      // NOTE to run a different program, switch out this string
       pulsar = child.spawn("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome", ['--start-fullscreen', '--noerrdialogs', '--disable-infobars', '--user-data-dir=./ChromeCache/', url]);
 
       pulsar.stdout.on('data', function (data) {
