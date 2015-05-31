@@ -1,6 +1,8 @@
 # supernova
 A broadcaster and receiver for COFA computers
 
+![A grid of screens observing a supernova](http://pulsar.dermah.org/supernova.jpg)
+
 ## What?
 
 This is a bunch of scripts that was used to more easily run [PULSAR](http://pulsar.dermah.org) on computers at COFA (UNSW Art & Design). Basically, client scripts wait for a signal from the master script, upon which they run a Terminal command. Upon a second signal, the client script kills the terminal command and waits for more signals. 
@@ -26,6 +28,6 @@ Steps to get this up and running at COFA:
 - Copy `observer.js` to your home directory (i.e. the `~` directory)
   - You can change line 47 to be whatever terminal command or script that you want. 
 - Log in to all your client computers and run `supernova.app`
-- Run the app on your master computer but kill the process after it starts listening. 
+- Run the app on your master computer but kill the process after it starts observing. 
 - On the master computer, run `./node supernova.js {url}` where `{url}` is the URL of where you want all the computers to look when a supernova occurs.
 - Press any key to open chrome on all computers. Press any key to kill chrome everywhere. Press Control-C to kill `supernova.js` everywhere
