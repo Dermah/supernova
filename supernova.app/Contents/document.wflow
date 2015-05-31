@@ -51,7 +51,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>tell application "Terminal" to do script "~/node-bootstrap.sh /Volumes/Data/PULSAR/ ~/listener.js"</string>
+					<string>tell application "Terminal" to do script "~/node-bootstrap.sh /Volumes/Data/PULSAR/ ~/observer.js"</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
