@@ -20,11 +20,11 @@ In more detail here's what happens:
 Steps to get this up and running at COFA:
 
 - Put `supernova.app` on your Desktop for easy access when logging in to a computer.
-..- It also helps to make this app a startup item so that it runs as soon as you log in
+  - It also helps to make this app a startup item so that it runs as soon as you log in
 - Copy `node-bootstrap.sh` to your home directory (i.e. the `~` directory)
-..- Comment out lines 9 to 14 if you don't need to provide arguments to the observer script
+  - Comment out lines 9 to 14 if you don't need to provide arguments to the observer script
 - Copy `observer.js` to your home directory (i.e. the `~` directory)
-..- You can change line 47 to be whatever terminal command or script that you want. 
+  - You can change line 47 to be whatever terminal command or script that you want. 
 - Log in to all your client computers and run `supernova.app`
 - Run the app on your master computer but kill the process after it starts listening. 
 - On the master computer, run `./node supernova.js {url}` where `{url}` is the URL of where you want all the computers to look when a supernova occurs.
