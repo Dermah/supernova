@@ -1,11 +1,12 @@
 #!/bin/bash
 if test "$#" -ne 2; then
-	echo "Usage: ./node-bootstrap.sh /path/to/working/folder /path/to/listener.js "
+	echo "Usage: ./node-bootstrap.sh /path/to/working/folder /path/to/observer.js "
 	echo "For example:"
-	echo "./node-bootstrap.sh /Volumes/Data/ /Volumes/Transit/PULSAR/listener.js "
+	echo "./node-bootstrap.sh /Volumes/Data/ /Volumes/Transit/PULSAR/observer.js "
 	exit
 fi
 
+# Comment this stuff out if you don't to customise arguments for each computer
 echo "- CREATING SUPERNOVA OBSERVER"
 echo "- ENTER YOUR COLUMN"
 read col
@@ -30,6 +31,6 @@ ln -s ./nodeBin/node-v0.12.0-darwin-x64/bin/node ./node
 
 echo "- SUCCESS, RUNNING SUPERNOVA OBSERVER"
 
-./node $1/listener.js $col $row
+./node $1/observer.js $col $row
 
 echo "- SUPERNOVA OBSERVER DESTROYED"
