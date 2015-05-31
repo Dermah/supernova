@@ -6,6 +6,7 @@ if test "$#" -ne 2; then
 	exit
 fi
 
+# Comment this stuff out if you don't to customise arguments for each computer
 echo "- CREATING SUPERNOVA OBSERVER"
 echo "- ENTER YOUR COLUMN"
 read col
@@ -30,6 +31,6 @@ ln -s ./nodeBin/node-v0.12.0-darwin-x64/bin/node ./node
 
 echo "- SUCCESS, RUNNING SUPERNOVA OBSERVER"
 
-./node $1/listener.js $col $row
+./node $1/observer.js $col $row
 
 echo "- SUPERNOVA OBSERVER DESTROYED"
