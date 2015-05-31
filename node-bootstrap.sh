@@ -1,8 +1,8 @@
 #!/bin/bash
 if test "$#" -ne 2; then
-	echo "Usage: ./node-bootstrap.sh /path/to/working/folder /path/to/listener.js "
+	echo "Usage: ./node-bootstrap.sh /path/to/working/folder /path/to/observer.js "
 	echo "For example:"
-	echo "./node-bootstrap.sh /Volumes/Data/ /Volumes/Transit/PULSAR/listener.js "
+	echo "./node-bootstrap.sh /Volumes/Data/ /Volumes/Transit/PULSAR/observer.js "
 	exit
 fi
 
